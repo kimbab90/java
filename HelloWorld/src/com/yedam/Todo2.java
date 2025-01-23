@@ -21,11 +21,13 @@ public class Todo2 {
 		friendAry[2] = "김민식,111,남";
 		friendAry[3] = "김민서,111,여";
 		friendAry[4] = "김민식,111,남";
-		friendAry[5] = "김민서,111,여";
-		friendAry[6] = "김민식,111,남";
+		friendAry[5] = "김민수,111,여";
+		friendAry[6] = "김민성,111,남";
 		friendAry[7] = "김민서,111,여";
-		friendAry[8] = "김민식,111,남";
-		friendAry[9] = "김민서,111,여";
+		friendAry[8] = "김민성,111,남";
+		friendAry[9] = "김민수,111,여";
+		friendAry[10] = "김민성,111,남";
+		friendAry[11] = "김민수,111,여";
 
 		Scanner scn = new Scanner(System.in);
 
@@ -42,25 +44,57 @@ public class Todo2 {
 			// 목록 페이지 처리
 			switch (menu) {
 			case 1:
-				System.out.println("한 페이지에 표시할 수를 입력하세요");
+
+				boolean print = true;
+
+				int page = 0;
+				int count = 0;
+				int max = 5;
+				int index = 0;
 				
-				
-//				int perPage = Integer.parseInt(scn.nextLine());
-//				
+				while (print) {
+					page++;
+					
+					System.out.println("=================");
+					System.out.printf("%d 페이지\n", page);
+					for (int i = index + 1; i < friendAry.length; i++) {
+						index = i;
+						if (friendAry[i] != null) {
+							System.out.println(friendAry[i] + "," + i);
+							count++;
+						}
+						if (count == max || i == (friendAry.length - 1)) {
+							count = 0;
+							break;
+						}
+					}
+
+					System.out.println("=================");
+					System.out.println("계속: 1, 종료: 0");
+					int check = Integer.parseInt(scn.nextLine());
+					if (check == 0) {
+						print = false;
+					}
+				};
+
 //				int count = 0;
 //				
-//				while (true) {
-//					for (; count < count + perPage; count++) {
-//						if (friendAry[count] != null) {
-//							System.out.println(friendAry);
-//						}
+//				String[] temp = new String[5];
+//				
+//				for (int i = 0; i < 5; i ++) {
+//					if (friendAry[i] != null) {
+//						temp[count] = friendAry[i];
+//						count++;
 //					}
-//					System.out.println("목록 종료. 다음 페이지: 1, 임의의 값: 종료");
-//					int stop = Integer.parseInt(scn.nextLine());
-//					if (stop != 1) {
+//					if (count == 5) {
 //						break;
 //					}
 //				}
+//				
+//				for (String item: temp) {
+//					System.out.println(item);
+//				}
+
 				break;
 			case 2:
 				System.out.println("친구 정보를 입력하세요. (이름,전화번호,성별)");
@@ -86,7 +120,7 @@ public class Todo2 {
 			case 4:
 				System.out.println("삭제할 정보를 입력하세요. (이름)");
 				String nameRemove = scn.nextLine();
-				
+
 				for (int i = 0; i < friendAry.length; i++) {
 					if (friendAry[i] != null && friendAry[i].split(",")[0].equals(nameRemove)) {
 						friendAry[i] = null;
