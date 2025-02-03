@@ -4,7 +4,7 @@ public class Calculator {
 
 	//
 
-	public void showCalendar() {
+	public void showCalendar(int space, int max) {
 
 		String[] days = { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
 
@@ -13,33 +13,53 @@ public class Calculator {
 		}
 		System.out.println("\n=====================================");
 
-		int empty = 3;
-		int max = 31;
+//		int space = 3;
+//		int max = 31;
 
-		for (int i = 0; i < max + empty; i++) {
-			if (i < empty) {
+		for (int i = 0; i < max + space; i++) {
+			if (i < space) {
 				System.out.printf("%5s", " ");
 			} else if ((i + 1) % 7 == 0) {
-				System.out.printf("%5d\n", i + 1 - empty);
+				System.out.printf("%5d\n", (i + 1) - space);
 			} else {
-				System.out.printf("%5d", i + 1 - empty);
+				System.out.printf("%5d", (i + 1) - space);
 			}
 		}
-		
-		int week = (empty + max) % 7 == 0 ? (empty + max) / 7 : (empty + max) / 7 + 1;   
+
+		String[] dateAry = new String[space + max];
+
+		for (int i = 0; i < dateAry.length; i++) {
+			if (i < space) {
+				dateAry[i] = "";
+			} else {
+				dateAry[i] = "" + ((i + 1) - space);
+			}
+		}
 
 		System.out.println("\n=====================================");
-		for (int i = 0; i < week; i++) {
-			for (int j = 0; j < 7; j++) {
-				int day =  i * 7 + j;
-				if (day < empty) {
-					System.out.printf("%5s", " ");
-				} else if (day < max + empty){
-					System.out.printf("%5d", day + 1 - empty);
-				}
+
+		for (int i = 0; i < dateAry.length; i++) {
+			if ((i + 1) % 7 == 0) {
+				System.out.printf("%5s\n", dateAry[i]);
+			} else {
+				System.out.printf("%5s", dateAry[i]);
 			}
-			System.out.print("\n");
 		}
+
+//		int week = (empty + max) % 7 == 0 ? (empty + max) / 7 : (empty + max) / 7 + 1;   
+//
+//		System.out.println("\n=====================================");
+//		for (int i = 0; i < week; i++) {
+//			for (int j = 0; j < 7; j++) {
+//				int day =  i * 7 + j;
+//				if (day < empty) {
+//					System.out.printf("%5s", " ");
+//				} else if (day < max + empty){
+//					System.out.printf("%5d", day + 1 - empty);
+//				}
+//			}
+//			System.out.print("\n");
+//		}
 		System.out.println("\n=====================================");
 	}
 
