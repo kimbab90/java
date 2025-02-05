@@ -19,11 +19,13 @@ public class StudentExe {
 		std2.studentName = "김민수";
 		std2.engScore = 85;
 		std2.mathScore = 88;
+		std2.gender = Gender.MAN;
 
 		Student std3 = new Student();
 		std3.studentName = "홍정학";
 		std3.engScore = 75;
 		std3.mathScore = 90;
+		std3.gender = Gender.WOMAN;
 
 		students[0] = std1;
 		students[1] = std2;
